@@ -1,0 +1,615 @@
+/* =========================================================
+   NOTES — IN THE LITTLE THINGS
+========================================================= */
+
+.notes-section {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+
+    box-sizing: border-box;
+
+    padding: 42px 0 145px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse 68% 58% at 50% 8%,
+            rgba(67, 128, 195, 0.115),
+            transparent 72%
+        ),
+
+        radial-gradient(
+            ellipse 48% 52% at 8% 50%,
+            rgba(83, 151, 220, 0.04),
+            transparent 72%
+        );
+}
+
+
+/* =========================================================
+   ATMOSPHERIC LIGHT
+========================================================= */
+
+.notes-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 720px;
+    height: 720px;
+
+    left: 50%;
+    top: 48%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(68, 137, 209, 0.055),
+            transparent 70%
+        );
+
+    filter: blur(38px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.notes-container {
+    position: relative;
+
+    width: min(1220px, 91%);
+    height: 100%;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.notes-header {
+    position: relative;
+
+    z-index: 20;
+
+    text-align: center;
+
+    margin-bottom: 0;
+}
+
+.notes-header h2 {
+    margin: 0;
+
+    color:
+        rgba(248, 251, 255, 0.95);
+
+    font-size:
+        clamp(
+            1.9rem,
+            3vw,
+            2.65rem
+        );
+
+    line-height: 1;
+
+    font-weight: 500;
+
+    letter-spacing: -0.055em;
+}
+
+.notes-header-line {
+    display: block;
+
+    width: 38px;
+    height: 1px;
+
+    margin: 17px auto 0;
+
+    transform-origin: center;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(109, 174, 236, 0.65),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   FIELD
+========================================================= */
+
+.notes-field {
+    position: absolute;
+
+    /*
+     * Extra bottom breathing room keeps the
+     * final thoughts away from navigation.
+     */
+    inset:
+        15% 0 7%;
+
+    overflow: visible;
+}
+
+
+/* =========================================================
+   DESKTOP NOTE
+========================================================= */
+
+.note {
+    position: absolute;
+
+    box-sizing: border-box;
+
+    /*
+     * Wide enough for comfortable reading,
+     * but not so wide that the thought becomes
+     * a conventional card.
+     */
+    width: 350px;
+
+    padding:
+        12px 0 12px 25px;
+
+    /*
+     * No card.
+     * Only one delicate vertical accent.
+     */
+    border: none;
+
+    border-left:
+        1px solid
+        rgba(108, 173, 232, 0.30);
+
+    background: transparent;
+
+    box-shadow: none;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    transition:
+        opacity 450ms ease,
+        border-color 450ms ease,
+        transform 450ms ease;
+}
+
+
+/* =========================================================
+   SMALL ACCENT LINE
+========================================================= */
+
+.note-marker {
+    display: block;
+
+    width: 23px;
+    height: 1px;
+
+    margin-bottom: 15px;
+
+    background:
+        rgba(111, 177, 237, 0.50);
+
+    transition:
+        width 450ms ease,
+        background 450ms ease;
+}
+
+
+/* =========================================================
+   MAIN THOUGHT
+========================================================= */
+
+.note-text {
+    margin: 0;
+
+    max-width: 320px;
+
+    color:
+        rgba(244, 249, 254, 0.88);
+
+    /*
+     * Large enough to read immediately,
+     * restrained enough to remain elegant.
+     */
+    font-size:
+        clamp(
+            1rem,
+            1.18vw,
+            1.20rem
+        );
+
+    font-weight: 400;
+
+    line-height: 1.48;
+
+    letter-spacing: -0.022em;
+}
+
+
+/* =========================================================
+   DESKTOP POSITIONS
+========================================================= */
+
+/*
+ * The positions intentionally create an uneven rhythm.
+ *
+ * Nothing overlaps.
+ * Nothing touches the navigation.
+ */
+
+.note-1 {
+    left: 6%;
+    top: 7%;
+
+    transform: rotate(-0.45deg);
+}
+
+.note-2 {
+    right: 6%;
+    top: 5%;
+
+    transform: rotate(0.4deg);
+}
+
+.note-3 {
+    left: 39%;
+    top: 31%;
+
+    transform: rotate(-0.25deg);
+}
+
+.note-4 {
+    left: 10%;
+    top: 52%;
+
+    transform: rotate(0.35deg);
+}
+
+.note-5 {
+    right: 12%;
+    top: 55%;
+
+    transform: rotate(-0.3deg);
+}
+
+.note-6 {
+    left: 32%;
+    top: 76%;
+
+    transform: rotate(0.35deg);
+}
+
+
+/* =========================================================
+   VISUAL DEPTH
+========================================================= */
+
+.note-1 {
+    opacity: 0.78;
+}
+
+.note-2 {
+    opacity: 0.82;
+}
+
+.note-3 {
+    opacity: 0.96;
+}
+
+.note-4 {
+    opacity: 0.76;
+}
+
+.note-5 {
+    opacity: 0.84;
+}
+
+.note-6 {
+    opacity: 0.90;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.note:hover {
+    background: transparent;
+
+    box-shadow: none;
+
+    border-left-color:
+        rgba(111, 179, 239, 0.52);
+}
+
+.note:hover .note-marker {
+    width: 31px;
+
+    background:
+        rgba(126, 190, 244, 0.72);
+}
+
+
+/* =========================================================
+   MOBILE
+   KEEP THE WORKING VERSION
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .notes-section {
+        padding:
+            34px 0 150px;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+
+    .notes-container {
+        width: 88%;
+        height: auto;
+    }
+
+
+    /* -----------------------------------------------------
+       HEADER
+    ----------------------------------------------------- */
+
+    .notes-header {
+        margin-bottom: 24px;
+    }
+
+    .notes-header h2 {
+        font-size:
+            clamp(
+                1.55rem,
+                7vw,
+                2rem
+            );
+
+        letter-spacing:
+            -0.035em;
+    }
+
+    .notes-header-line {
+        width: 32px;
+
+        margin-top: 12px;
+    }
+
+
+    /* -----------------------------------------------------
+       FIELD
+    ----------------------------------------------------- */
+
+    .notes-field {
+        position: relative;
+
+        inset: auto;
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 13px;
+
+        padding:
+            0 0 14px;
+
+        box-sizing: border-box;
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE CARDS
+    ----------------------------------------------------- */
+
+    .note {
+        position: relative;
+
+        width: 88%;
+        max-width: 88%;
+
+        min-height: 0;
+
+        margin: 0;
+
+        padding:
+            17px
+            18px
+            18px
+            20px;
+
+        top: auto !important;
+        right: auto !important;
+        left: auto !important;
+
+        transform: none !important;
+
+        box-sizing: border-box;
+
+        /*
+         * Mobile keeps the cards because this
+         * layout is easier to read on a narrow screen.
+         */
+        background:
+            linear-gradient(
+                135deg,
+                rgba(36, 77, 121, 0.20),
+                rgba(7, 27, 50, 0.07)
+            );
+
+        border:
+            1px solid
+            rgba(108, 173, 232, 0.14);
+
+        border-left-color:
+            rgba(108, 173, 232, 0.34);
+
+        box-shadow:
+            0 15px 35px
+            rgba(0, 0, 0, 0.04);
+
+        opacity: 1;
+    }
+
+
+    .note:nth-child(odd) {
+        align-self: flex-start;
+    }
+
+    .note:nth-child(even) {
+        align-self: flex-end;
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE MARKER
+    ----------------------------------------------------- */
+
+    .note-marker {
+        width: 15px;
+
+        margin-bottom: 13px;
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE TEXT
+    ----------------------------------------------------- */
+
+    .note-text {
+        width: 100%;
+        max-width: none;
+
+        font-size:
+            0.75rem;
+
+        line-height:
+            1.52;
+
+        letter-spacing:
+            -0.012em;
+
+        overflow-wrap:
+            break-word;
+    }
+}
+
+
+/* =========================================================
+   SHORT MOBILE
+========================================================= */
+
+@media (max-width: 600px)
+and (max-height: 700px) {
+
+    .notes-section {
+        padding-bottom: 145px;
+    }
+
+    .notes-header {
+        margin-bottom: 20px;
+    }
+
+    .notes-field {
+        gap: 11px;
+    }
+
+    .note {
+        width: 90%;
+        max-width: 90%;
+
+        padding:
+            15px
+            16px
+            16px
+            18px;
+    }
+
+    .note-text {
+        font-size:
+            0.72rem;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .notes-section {
+        padding-top: 30px;
+    }
+
+    .notes-header {
+        margin-bottom: 18px;
+    }
+
+    .notes-header h2 {
+        font-size:
+            1.45rem;
+    }
+
+    .notes-header-line {
+        width: 28px;
+    }
+
+    .notes-field {
+        gap: 10px;
+    }
+
+    .note {
+        width: 91%;
+        max-width: 91%;
+
+        padding:
+            14px
+            14px
+            15px
+            17px;
+    }
+
+    .note-text {
+        font-size:
+            0.68rem;
+
+        line-height:
+            1.47;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .note,
+    .note-marker {
+        transition: none;
+    }
+}

@@ -1,0 +1,237 @@
+:root {
+    /* =====================================================
+       VL — FINAL BLUE-DOMINANT MULTI-COLOR SYSTEM
+    ===================================================== */
+
+
+    /* -----------------------------------------------------
+       ATMOSPHERE — BLUE WORLD
+    ----------------------------------------------------- */
+
+    --bg-primary: #07182d;
+    --bg-secondary: #0b2340;
+
+    --bg-surface: #102f52;
+    --bg-surface-soft: #153a63;
+
+    --bg-luminous: #1d4f82;
+
+
+    /* -----------------------------------------------------
+       PRIMARY BLUE LIGHT
+    ----------------------------------------------------- */
+
+    --accent-blue-deep: #245d94;
+    --accent-blue: #63a9ee;
+    --accent-blue-soft: #8bc6f7;
+    --accent-blue-light: #b8ddfa;
+
+    --accent: var(--accent-blue);
+    --accent-hover: var(--accent-blue-soft);
+
+
+    /* -----------------------------------------------------
+       WARM ACCENT
+       Used sparingly for personality and softness.
+    ----------------------------------------------------- */
+
+    --accent-warm: #d99a8f;
+    --accent-warm-soft: #e9b8ad;
+    --accent-warm-muted: #b97870;
+
+
+    /* -----------------------------------------------------
+       SOFT GOLD
+       Used for tiny highlights, not large surfaces.
+    ----------------------------------------------------- */
+
+    --accent-gold: #d9c58a;
+    --accent-gold-soft: #e8d9a8;
+    --accent-gold-muted: #a99462;
+
+
+    /* -----------------------------------------------------
+       COOL NEUTRAL
+    ----------------------------------------------------- */
+
+    --accent-silver: #b8c9d8;
+    --accent-silver-soft: #d5e1eb;
+
+
+    /* -----------------------------------------------------
+       TEXT
+    ----------------------------------------------------- */
+
+    --text-primary: #f5f9fd;
+    --text-secondary: #d0e1f1;
+    --text-muted: #9db7d0;
+    --text-subtle: #718da9;
+
+    --text-on-blue: #ffffff;
+
+
+    /* -----------------------------------------------------
+       BORDERS
+    ----------------------------------------------------- */
+
+    --border:
+        rgba(155, 202, 242, 0.18);
+
+    --border-soft:
+        rgba(155, 202, 242, 0.09);
+
+    --border-active:
+        rgba(99, 169, 238, 0.58);
+
+    --border-warm:
+        rgba(217, 154, 143, 0.28);
+
+    --border-gold:
+        rgba(217, 197, 138, 0.26);
+
+
+    /* -----------------------------------------------------
+       ATMOSPHERIC LIGHT
+    ----------------------------------------------------- */
+
+    --glow-blue:
+        rgba(78, 155, 224, 0.18);
+
+    --glow-blue-soft:
+        rgba(103, 177, 237, 0.10);
+
+    --glow-blue-bright:
+        rgba(139, 198, 247, 0.24);
+
+    --glow-warm:
+        rgba(217, 154, 143, 0.10);
+
+    --glow-gold:
+        rgba(217, 197, 138, 0.09);
+
+
+    /* -----------------------------------------------------
+       RADIUS
+    ----------------------------------------------------- */
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius: 20px;
+    --radius-lg: 28px;
+
+
+    /* -----------------------------------------------------
+       SPACING
+    ----------------------------------------------------- */
+
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 3rem;
+    --space-6: 5rem;
+    --space-7: 7rem;
+
+
+    /* -----------------------------------------------------
+       TYPOGRAPHY
+    ----------------------------------------------------- */
+
+    --font-sans:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+
+    /* Display */
+
+    --fs-display:
+        clamp(3rem, 8vw, 6.5rem);
+
+    --fs-hero:
+        clamp(2.5rem, 6vw, 5rem);
+
+    --fs-heading:
+        clamp(1.8rem, 4vw, 3.2rem);
+
+    --fs-subtitle:
+        clamp(0.95rem, 1.5vw, 1.15rem);
+
+    --fs-body:
+        clamp(0.82rem, 1vw, 1rem);
+
+    --fs-small:
+        clamp(0.68rem, 0.8vw, 0.82rem);
+
+    --fs-micro:
+        clamp(0.48rem, 0.6vw, 0.62rem);
+
+
+    /* -----------------------------------------------------
+       LINE HEIGHT
+    ----------------------------------------------------- */
+
+    --lh-tight: 0.94;
+    --lh-heading: 1.05;
+    --lh-body: 1.55;
+    --lh-relaxed: 1.7;
+
+
+    /* -----------------------------------------------------
+       SHADOWS
+    ----------------------------------------------------- */
+
+    --shadow-soft:
+        0 12px 35px
+        rgba(2, 12, 25, 0.20);
+
+    --shadow-medium:
+        0 22px 55px
+        rgba(2, 12, 25, 0.28);
+
+    --shadow-deep:
+        0 35px 90px
+        rgba(2, 10, 22, 0.42);
+
+
+    /* -----------------------------------------------------
+       MOTION
+    ----------------------------------------------------- */
+
+    --ease-vl:
+        cubic-bezier(0.22, 1, 0.36, 1);
+
+    --ease-soft:
+        cubic-bezier(0.4, 0, 0.2, 1);
+
+    --duration-fast: 220ms;
+    --duration-normal: 450ms;
+    --duration-slow: 800ms;
+    --duration-cinematic: 1200ms;
+
+
+    /* -----------------------------------------------------
+       Z-INDEX
+    ----------------------------------------------------- */
+
+    --z-background: -10;
+    --z-content: 10;
+    --z-navigation: 100;
+    --z-overlay: 500;
+    --z-player: 1000;
+}
+
+
+/* =========================================================
+   VL — EXPERIENCE SAFE AREAS
+========================================================= */
+
+:root {
+    --navigation-safe-space: 96px;
+    --navigation-safe-space-mobile: 82px;
+}

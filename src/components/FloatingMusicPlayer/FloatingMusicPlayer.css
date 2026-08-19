@@ -1,0 +1,494 @@
+/* =========================================================
+   VIEWPORT DRAG CONSTRAINT
+========================================================= */
+
+.floating-player-constraints {
+    position: fixed;
+
+    inset: 10px;
+
+    width: auto;
+    height: auto;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   VL — PREMIUM FLOATING MUSIC PLAYER
+========================================================= */
+
+.floating-music-player {
+    position: fixed;
+
+    right: 28px;
+    bottom: 150px;
+
+    z-index: 9999;
+
+    width: 318px;
+    min-height: 82px;
+
+    display: flex;
+    align-items: stretch;
+
+    padding: 11px 11px 11px 8px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid
+        rgba(161, 204, 241, 0.18);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(12, 34, 57, 0.88),
+            rgba(5, 20, 36, 0.94)
+        );
+
+    box-shadow:
+        0 24px 65px
+        rgba(0, 6, 14, 0.42),
+
+        0 5px 20px
+        rgba(0, 8, 18, 0.24),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.055);
+
+    backdrop-filter:
+        blur(26px)
+        saturate(125%);
+
+    -webkit-backdrop-filter:
+        blur(26px)
+        saturate(125%);
+
+    user-select: none;
+
+    touch-action: none;
+
+    cursor: grab;
+
+    will-change: transform;
+    contain: layout paint;
+}
+
+
+/* =========================================================
+   DRAGGING
+========================================================= */
+
+.floating-music-player:active {
+    cursor: grabbing;
+}
+
+
+/* =========================================================
+   DRAG HANDLE
+========================================================= */
+
+.floating-player-handle {
+    width: 17px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+
+    flex-shrink: 0;
+}
+
+.floating-player-handle span {
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(173, 207, 237, 0.30);
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.floating-player-content {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 1px 8px 0 6px;
+}
+
+
+/* =========================================================
+   TOP ROW
+========================================================= */
+
+.floating-player-top {
+    min-width: 0;
+}
+
+.floating-player-meta {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 3px;
+}
+
+.floating-player-label {
+    color:
+        rgba(159, 195, 226, 0.48);
+
+    font-size: 0.40rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.20em;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+}
+
+.floating-player-index {
+    color:
+        rgba(150, 193, 231, 0.30);
+
+    font-size: 0.40rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.10em;
+}
+
+
+/* =========================================================
+   SONG
+========================================================= */
+
+.floating-player-song {
+    min-width: 0;
+
+    display: flex;
+    align-items: baseline;
+
+    gap: 6px;
+}
+
+.floating-player-title {
+    overflow: hidden;
+
+    color:
+        rgba(242, 248, 253, 0.94);
+
+    font-size: 0.72rem;
+
+    font-weight: 650;
+
+    letter-spacing: -0.01em;
+
+    line-height: 1.2;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+.floating-player-artist {
+    overflow: hidden;
+
+    max-width: 90px;
+
+    color:
+        rgba(181, 207, 231, 0.43);
+
+    font-size: 0.48rem;
+
+    line-height: 1.2;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.floating-player-progress-wrap {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    margin-top: 9px;
+}
+
+.floating-player-time {
+    min-width: 25px;
+
+    color:
+        rgba(173, 200, 224, 0.38);
+
+    font-size: 0.40rem;
+
+    line-height: 1;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   RANGE
+========================================================= */
+
+.floating-player-progress {
+    flex: 1;
+
+    min-width: 40px;
+
+    height: 3px;
+
+    appearance: none;
+
+    border: 0;
+
+    border-radius: 999px;
+
+    outline: none;
+
+    background:
+        rgba(161, 197, 226, 0.13);
+
+    cursor: pointer;
+}
+
+.floating-player-progress::-webkit-slider-thumb {
+    appearance: none;
+
+    width: 8px;
+    height: 8px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background:
+        #dceeff;
+
+    box-shadow:
+        0 0 10px
+        rgba(119, 184, 239, 0.35);
+
+    cursor: pointer;
+}
+
+.floating-player-progress::-moz-range-thumb {
+    width: 8px;
+    height: 8px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background:
+        #dceeff;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.floating-player-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+
+    flex-shrink: 0;
+
+    padding-left: 2px;
+}
+
+
+/* =========================================================
+   PLAY
+========================================================= */
+
+.floating-player-play {
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+    place-items: center;
+
+    padding: 0;
+
+    border:
+        1px solid
+        rgba(145, 198, 243, 0.19);
+
+    border-radius: 50%;
+
+    background:
+        rgba(83, 151, 220, 0.10);
+
+    color:
+        rgba(230, 242, 253, 0.88);
+
+    font-size: 0.52rem;
+
+    cursor: pointer;
+
+    transition:
+        transform 220ms ease,
+        background 220ms ease,
+        border-color 220ms ease;
+}
+
+.floating-player-play:hover {
+    transform: scale(1.06);
+
+    background:
+        rgba(83, 151, 220, 0.19);
+
+    border-color:
+        rgba(145, 198, 243, 0.32);
+}
+
+
+/* =========================================================
+   CLOSE
+========================================================= */
+
+.floating-player-close {
+    width: 25px;
+    height: 30px;
+
+    display: grid;
+    place-items: center;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color:
+        rgba(177, 204, 229, 0.38);
+
+    font-size: 0.95rem;
+
+    cursor: pointer;
+
+    transition:
+        color 180ms ease,
+        transform 180ms ease;
+}
+
+.floating-player-close:hover {
+    color:
+        rgba(239, 247, 253, 0.90);
+
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .floating-music-player {
+        right: 14px;
+        bottom: 105px;
+
+        width: calc(100% - 28px);
+
+        max-width: 340px;
+
+        min-height: 76px;
+
+        padding:
+            10px 9px 10px 7px;
+
+        border-radius: 16px;
+    }
+
+    .floating-player-content {
+        padding-left: 5px;
+    }
+
+    .floating-player-title {
+        font-size: 0.68rem;
+    }
+
+    .floating-player-artist {
+        max-width: 75px;
+
+        font-size: 0.46rem;
+    }
+
+    .floating-player-progress-wrap {
+        margin-top: 8px;
+    }
+
+    .floating-player-play {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .floating-music-player {
+        right: 10px;
+
+        width: calc(100% - 20px);
+
+        min-height: 74px;
+    }
+
+    .floating-player-artist {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .floating-player-play,
+    .floating-player-close {
+        transition: none;
+    }
+}

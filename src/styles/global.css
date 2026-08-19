@@ -1,0 +1,613 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-sans);
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(99, 169, 238, 0.18),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 85% 65%,
+            rgba(217, 154, 143, 0.045),
+            transparent 28%
+        ),
+        linear-gradient(
+            145deg,
+            #0b2340 0%,
+            #07182d 48%,
+            #051321 100%
+        );
+
+    color: var(--text-primary);
+
+    overflow: hidden;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+button {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+   VL — CINEMATIC EXPERIENCE LAYER
+========================================================= */
+
+.app-shell {
+    position: relative;
+
+    z-index: 2;
+
+    isolation: isolate;
+
+    min-height: 100dvh;
+}
+
+
+/* =========================================================
+   SCENE STAGE
+========================================================= */
+
+.section-stage {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    transform-origin: center center;
+
+    will-change:
+        transform,
+        opacity,
+        filter;
+}
+
+
+/* =========================================================
+   CONTENT DEPTH
+========================================================= */
+
+.content {
+    position: relative;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   SUBTLE EDGE VIGNETTE
+========================================================= */
+
+.app-shell::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    z-index: -1;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 40%,
+            rgba(2, 10, 20, 0.24) 100%
+        );
+}
+
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+    background:
+        rgba(99, 169, 238, 0.24);
+
+    color:
+        var(--text-primary);
+}
+
+/* =========================================================
+   VL — GLOBAL AUDIO CONTROLS
+========================================================= */
+
+.experience-audio-controls {
+    position: fixed !important;
+
+    top:
+        max(
+            18px,
+            env(safe-area-inset-top)
+        ) !important;
+
+    right:
+        max(
+            18px,
+            env(safe-area-inset-right)
+        ) !important;
+
+    left: auto !important;
+    bottom: auto !important;
+
+    z-index: 10000 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: flex-end !important;
+
+    gap: 8px !important;
+
+    width: auto !important;
+    height: auto !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    background: transparent !important;
+
+    border: 0 !important;
+
+    box-shadow: none !important;
+
+    pointer-events: none !important;
+}
+
+
+/* =========================================================
+   MUTE BUTTON
+========================================================= */
+
+.experience-audio-button {
+    position: relative !important;
+
+    order: 2 !important;
+
+    width: 40px !important;
+    height: 40px !important;
+
+    min-width: 40px !important;
+    min-height: 40px !important;
+
+    max-width: 40px !important;
+    max-height: 40px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    flex-shrink: 0 !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border:
+        1px solid
+        rgba(
+            128,
+            184,
+            228,
+            0.24
+        ) !important;
+
+    border-radius: 50% !important;
+
+    background:
+        rgba(
+            13,
+            38,
+            65,
+            0.88
+        ) !important;
+
+    color:
+        rgba(
+            226,
+            239,
+            250,
+            0.82
+        ) !important;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.18),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.045) !important;
+
+    backdrop-filter:
+        blur(18px) !important;
+
+    -webkit-backdrop-filter:
+        blur(18px) !important;
+
+    cursor: pointer !important;
+
+    pointer-events: auto !important;
+
+    outline: none !important;
+
+    transition:
+        transform 180ms ease,
+        background 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease !important;
+}
+
+
+.experience-audio-button:hover {
+    transform:
+        translateY(-1px) !important;
+
+    border-color:
+        rgba(
+            130,
+            196,
+            238,
+            0.42
+        ) !important;
+
+    background:
+        rgba(
+            24,
+            56,
+            88,
+            0.94
+        ) !important;
+
+    color:
+        #f4f9fd !important;
+}
+
+
+.experience-audio-button:active {
+    transform:
+        scale(0.93) !important;
+}
+
+
+.experience-audio-button.is-muted {
+    color:
+        rgba(
+            164,
+            192,
+            215,
+            0.58
+        ) !important;
+}
+
+
+.experience-audio-button:focus-visible {
+    outline:
+        1px solid
+        rgba(
+            126,
+            190,
+            236,
+            0.72
+        ) !important;
+
+    outline-offset: 3px !important;
+}
+
+
+/* =========================================================
+   AUDIO ICON
+========================================================= */
+
+.audio-control-svg {
+    display: block !important;
+
+    width: 16px !important;
+    height: 16px !important;
+
+    flex-shrink: 0 !important;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.55;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+.audio-control-svg path:first-child {
+    fill: currentColor;
+
+    stroke: none;
+}
+
+
+/* =========================================================
+   BGM AGAIN
+========================================================= */
+
+.bgm-again-button {
+    order: 1 !important;
+
+    height: 40px !important;
+
+    min-height: 40px !important;
+
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    flex-shrink: 0 !important;
+
+    gap: 7px !important;
+
+    padding:
+        0
+        14px !important;
+
+    margin: 0 !important;
+
+    border:
+        1px solid
+        rgba(
+            128,
+            184,
+            228,
+            0.24
+        ) !important;
+
+    border-radius: 999px !important;
+
+    background:
+        rgba(
+            13,
+            38,
+            65,
+            0.88
+        ) !important;
+
+    color:
+        rgba(
+            226,
+            239,
+            250,
+            0.82
+        ) !important;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.18),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.045) !important;
+
+    backdrop-filter:
+        blur(18px) !important;
+
+    -webkit-backdrop-filter:
+        blur(18px) !important;
+
+    font-family: inherit !important;
+
+    font-size: 8px !important;
+
+    font-weight: 700 !important;
+
+    letter-spacing: 0.14em !important;
+
+    line-height: 1 !important;
+
+    text-transform: uppercase !important;
+
+    white-space: nowrap !important;
+
+    cursor: pointer !important;
+
+    pointer-events: auto !important;
+
+    outline: none !important;
+
+    transition:
+        transform 180ms ease,
+        background 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease !important;
+}
+
+
+.bgm-again-button:hover {
+    transform:
+        translateY(-1px) !important;
+
+    border-color:
+        rgba(
+            130,
+            196,
+            238,
+            0.42
+        ) !important;
+
+    background:
+        rgba(
+            24,
+            56,
+            88,
+            0.94
+        ) !important;
+
+    color:
+        #f4f9fd !important;
+}
+
+
+.bgm-again-button:active {
+    transform:
+        scale(0.96) !important;
+}
+
+
+.bgm-again-button:focus-visible {
+    outline:
+        1px solid
+        rgba(
+            126,
+            190,
+            236,
+            0.72
+        ) !important;
+
+    outline-offset: 3px !important;
+}
+
+
+.bgm-again-icon {
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    font-size: 14px !important;
+
+    line-height: 1 !important;
+
+    transform:
+        translateY(-0.5px);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .experience-audio-controls {
+        top:
+            max(
+                12px,
+                env(safe-area-inset-top)
+            ) !important;
+
+        right:
+            max(
+                12px,
+                env(safe-area-inset-right)
+            ) !important;
+
+        gap: 6px !important;
+    }
+
+
+    .experience-audio-button {
+        width: 35px !important;
+        height: 35px !important;
+
+        min-width: 35px !important;
+        min-height: 35px !important;
+
+        max-width: 35px !important;
+        max-height: 35px !important;
+    }
+
+
+    .audio-control-svg {
+        width: 14px !important;
+        height: 14px !important;
+    }
+
+
+    .bgm-again-button {
+        height: 35px !important;
+
+        min-height: 35px !important;
+
+        padding:
+            0
+            10px !important;
+
+        gap: 5px !important;
+
+        font-size: 7px !important;
+    }
+
+
+    .bgm-again-icon {
+        font-size: 13px !important;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .experience-audio-controls {
+        top:
+            max(
+                10px,
+                env(safe-area-inset-top)
+            ) !important;
+
+        right:
+            max(
+                10px,
+                env(safe-area-inset-right)
+            ) !important;
+
+        gap: 5px !important;
+    }
+
+
+    .experience-audio-button {
+        width: 33px !important;
+        height: 33px !important;
+
+        min-width: 33px !important;
+        min-height: 33px !important;
+
+        max-width: 33px !important;
+        max-height: 33px !important;
+    }
+
+
+    .bgm-again-button {
+        height: 33px !important;
+
+        min-height: 33px !important;
+
+        padding:
+            0
+            8px !important;
+
+        font-size: 6.5px !important;
+    }
+
+}

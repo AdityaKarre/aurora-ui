@@ -1,0 +1,120 @@
+/* =========================================================
+   VL — PREMIUM WORLD ATMOSPHERE
+========================================================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            75% 65% at 50% 42%,
+            rgba(63, 126, 190, 0.075),
+            transparent 68%
+        ),
+        radial-gradient(
+            55% 50% at 15% 85%,
+            rgba(72, 137, 205, 0.035),
+            transparent 72%
+        ),
+        #061426;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   SLOW LIGHT FIELD
+========================================================= */
+
+.background::before {
+    content: "";
+
+    position: absolute;
+    inset: -25%;
+
+    background:
+        radial-gradient(
+            circle at 30% 35%,
+            rgba(103, 177, 237, 0.055),
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 72% 62%,
+            rgba(83, 151, 220, 0.045),
+            transparent 28%
+        );
+
+    filter: blur(40px);
+
+    opacity: 0.9;
+
+    animation:
+        vlLightDrift
+        24s
+        ease-in-out
+        infinite alternate;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   VERY SUBTLE FILM GRAIN
+========================================================= */
+
+.background::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    opacity: 0.025;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+
+    mix-blend-mode: soft-light;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ATMOSPHERIC MOVEMENT
+========================================================= */
+
+@keyframes vlLightDrift {
+
+    0% {
+        transform:
+            translate3d(-2%, -1%, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate3d(1%, 2%, 0)
+            scale(1.025);
+    }
+
+    100% {
+        transform:
+            translate3d(3%, 1%, 0)
+            scale(1.045);
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .background::before {
+        animation: none;
+    }
+}

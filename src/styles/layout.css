@@ -1,0 +1,222 @@
+/* =========================
+   BASE LAYOUT
+========================= */
+
+.section {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 32px;
+}
+
+.container {
+    width: min(100%, 720px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 32px;
+
+    margin: auto 0;
+}
+
+h1 {
+    font-size: var(--fs-heading);
+
+    max-width: 12ch;
+    margin: 0 auto;
+
+    line-height: var(--lh-heading);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+
+    text-align: center;
+
+    color: var(--text-primary);
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+
+    text-align: center;
+
+    font-size: var(--fs-subtitle);
+    line-height: var(--lh-relaxed);
+
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.eyebrow {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    width: max-content;
+    margin: 0 auto;
+
+    padding: 7px 14px;
+
+    border: 1px solid var(--border-soft);
+    border-radius: 999px;
+
+    background:
+        rgba(16, 47, 82, 0.55);
+
+    color: var(--text-muted);
+
+    font-size: 0.72rem;
+    font-weight: 600;
+
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.scroll-indicator {
+    display: flex;
+    justify-content: center;
+
+    margin-top: var(--space-5);
+}
+
+.scroll-indicator span {
+    width: 2px;
+    height: 56px;
+
+    border-radius: 999px;
+
+    background: linear-gradient(
+        transparent,
+        var(--accent),
+        transparent
+    );
+
+    animation: scrollPulse 2.4s ease-in-out infinite;
+}
+
+
+/* =========================
+   APP SHELL
+========================= */
+
+.app-shell {
+    position: relative;
+
+    width: 100%;
+    height: 100dvh;
+    min-height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+.content {
+    flex: 1;
+    min-height: 0;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    /* .app-shell {
+        grid-template-rows:
+            52px
+            minmax(0, 1fr)
+            auto;
+    } */
+
+    .section {
+        padding: 16px;
+    }
+
+    .container {
+        width: 100%;
+        gap: 14px;
+    }
+
+
+    /* Navigation */
+
+
+    /* Little Things */
+
+    .little-things-scene {
+        width: 100%;
+
+        min-height: 100%;
+
+        padding: 0 8px;
+    }
+
+    .little-things-heading {
+        top: 3%;
+    }
+
+    .little-things-heading h2 {
+        font-size: 1.25rem;
+    }
+
+    .observation {
+        width: min(100%, 310px);
+    }
+
+    .observation-number {
+        margin-bottom: 1.4rem;
+
+        font-size: 0.62rem;
+    }
+
+    .observation p {
+        font-size: 1.9rem;
+
+        line-height: 1.2;
+    }
+
+    .observation-continue {
+        bottom: 4%;
+    }
+
+
+
+    /* Photo sizes */
+}
+
+/* =========================================================
+   VL — CINEMATIC SECTION STAGE
+========================================================= */
+
+.section-stage {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    will-change: opacity;
+}

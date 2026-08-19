@@ -1,0 +1,769 @@
+/* =========================================================
+   MEMORIES — SCATTERED MOMENTS
+========================================================= */
+
+.memories {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   ATMOSPHERE
+========================================================= */
+
+.memories::before {
+    content: "";
+
+    position: absolute;
+
+    width: 650px;
+    height: 650px;
+
+    left: 50%;
+    top: 48%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(78, 151, 235, 0.14),
+            rgba(78, 151, 235, 0.045) 42%,
+            transparent 72%
+        );
+
+    filter: blur(20px);
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   WALL
+========================================================= */
+
+.memory-wall {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.memory-wall-heading {
+    position: absolute;
+
+    top: 3%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 10;
+
+    color: rgba(235, 242, 250, 0.84);
+
+    font-size: 0.62rem;
+    font-weight: 600;
+
+    letter-spacing: 0.22em;
+    line-height: 1;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+    text-align: center;
+}
+
+.memory-wall-heading::after {
+    content: "";
+
+    display: block;
+
+    width: 34px;
+    height: 1px;
+
+    margin: 10px auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(108, 171, 237, 0.75),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   MEMORY FIELD
+========================================================= */
+
+.memory-field {
+    position: absolute;
+
+    inset: 8% 0 4%;
+
+    overflow: hidden;
+
+    perspective: 1000px;
+}
+
+
+/* =========================================================
+   MEMORY CARD
+========================================================= */
+
+.memory-card {
+    position: absolute;
+
+    display: block;
+
+    padding: 0;
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    transform-origin: center;
+
+    outline: none;
+
+    font-family: inherit;
+
+    will-change:
+        transform,
+        opacity;
+
+    transition:
+        filter 700ms
+        cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.memory-card:focus-visible {
+    outline:
+        1px solid
+        rgba(111, 174, 255, 0.85);
+
+    outline-offset: 10px;
+}
+
+
+/* =========================================================
+   PHOTO
+========================================================= */
+
+.memory-photo {
+    position: relative;
+
+    width: 154px;
+    height: 192px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(211, 229, 247, 0.22);
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #3c6fa8 0%,
+            #214e7d 45%,
+            #102d50 100%
+        );
+
+    box-shadow:
+        0 18px 42px
+        rgba(3, 12, 25, 0.30),
+
+        0 3px 10px
+        rgba(3, 12, 25, 0.14),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.08);
+
+    transition:
+    width 600ms
+    cubic-bezier(0.22, 1, 0.36, 1),
+
+    height 600ms
+    cubic-bezier(0.22, 1, 0.36, 1),
+
+    border-color 500ms ease,
+
+    box-shadow 550ms ease;
+}
+
+
+/* =========================================================
+   SCATTERED SIZES
+========================================================= */
+
+.memory-small .memory-photo {
+    width: 138px;
+    height: 172px;
+}
+
+.memory-medium .memory-photo {
+    width: 162px;
+    height: 202px;
+}
+
+.memory-large .memory-photo {
+    width: 184px;
+    height: 230px;
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.memory-photo img {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    /*
+     * NEVER CROP THE ORIGINAL PHOTO.
+     */
+    object-fit: contain;
+
+    display: block;
+
+    user-select: none;
+    -webkit-user-drag: none;
+
+    transform: scale(1.01);
+
+    filter:
+        blur(7px)
+        brightness(0.48)
+        saturate(0.65);
+
+    transition:
+        filter 900ms
+        cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================================
+   IMAGE OVERLAY
+========================================================= */
+
+.memory-photo-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(4, 15, 29, 0.10),
+            rgba(4, 15, 29, 0.40)
+        );
+
+    pointer-events: none;
+
+    transition:
+        opacity 800ms
+        cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================================
+   UNVISITED
+========================================================= */
+
+.memory-card:not(.memory-card-visited)
+.memory-photo
+img {
+    filter:
+        blur(7px)
+        brightness(0.48)
+        saturate(0.65);
+}
+
+
+/* =========================================================
+   VISITED
+========================================================= */
+
+.memory-card-visited
+.memory-photo
+img {
+    filter:
+        blur(3px)
+        brightness(0.68)
+        saturate(0.82);
+}
+
+.memory-card-visited
+.memory-photo-overlay {
+    opacity: 0.55;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.memory-card:hover
+.memory-photo
+img {
+    transform: scale(1.025);
+}
+
+
+/* =========================================================
+   DIMMED
+========================================================= */
+
+.memory-card-dimmed {
+    filter:
+        brightness(0.38)
+        saturate(0.45);
+}
+
+.memory-card-dimmed
+.memory-photo
+img {
+    filter:
+        blur(10px)
+        brightness(0.35)
+        saturate(0.45);
+}
+
+
+/* =========================================================
+   SELECTED — DESKTOP
+========================================================= */
+
+.memory-card-selected {
+    filter:
+        brightness(1.08)
+        saturate(1.04);
+
+    z-index: 30 !important;
+}
+
+.memory-card-selected
+.memory-photo {
+
+    width:
+        min(
+            44vw,
+            560px
+        );
+
+    height:
+        min(
+            48vh,
+            480px
+        );
+
+    border-color:
+        rgba(230, 241, 252, 0.50);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(45, 92, 145, 0.32),
+            rgba(5, 18, 34, 0.92)
+        );
+
+    box-shadow:
+        0 50px 110px
+        rgba(3, 12, 25, 0.54),
+
+        0 0 70px
+        rgba(82, 155, 238, 0.26),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.12);
+}
+
+.memory-card-selected
+.memory-photo
+img {
+    filter:
+        blur(0)
+        brightness(1)
+        saturate(1);
+
+    transform: scale(1);
+
+    object-fit: contain;
+}
+
+.memory-card-selected
+.memory-photo-overlay {
+    opacity: 0;
+}
+
+
+/* =========================================================
+   BACKDROP
+========================================================= */
+
+.memory-backdrop {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 20;
+
+    padding: 0;
+    border: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 43%,
+            rgba(17, 47, 79, 0.24),
+            rgba(4, 16, 31, 0.64) 80%
+        );
+
+    cursor: default;
+}
+
+
+/* =========================================================
+   SELECTED QUOTE — DESKTOP
+========================================================= */
+
+.memory-selected-content {
+    position: absolute;
+
+    /*
+     * Keep the quote away from both sides.
+     * No translateX because Framer Motion
+     * controls transform.
+     */
+    left: 5%;
+    right: 5%;
+
+    /*
+     * Raised above the bottom navigation.
+     */
+    bottom: 12%;
+
+    width: auto;
+
+    padding: 0 1rem;
+
+    z-index: 50;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    pointer-events: none;
+}
+
+.memory-selected-content p {
+    margin: 0;
+
+    color:
+        rgba(248, 251, 255, 0.97);
+
+    font-family:
+        "Segoe Script",
+        "Snell Roundhand",
+        "Brush Script MT",
+        "Lucida Handwriting",
+        cursive;
+
+    font-size:
+        clamp(
+            1.25rem,
+            2.25vw,
+            1.85rem
+        );
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    line-height: 1.35;
+
+    letter-spacing: 0.005em;
+
+    text-shadow:
+        0 4px 25px
+        rgba(0, 0, 0, 0.45);
+
+    overflow-wrap: break-word;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .memories {
+        height: 100dvh;
+        min-height: 100dvh;
+    }
+
+    .memory-wall {
+        height: 100%;
+    }
+
+    .memory-field {
+        /*
+         * Keep the actual memory wall large.
+         * Do not squeeze it too much.
+         */
+        inset: 6% 0 15%;
+    }
+
+
+    /* -----------------------------------------------------
+       THUMBNAILS
+    ----------------------------------------------------- */
+
+    .memory-photo {
+        width: 76px;
+        height: 95px;
+    }
+
+    .memory-small .memory-photo {
+        width: 72px;
+        height: 90px;
+    }
+
+    .memory-medium .memory-photo {
+        width: 84px;
+        height: 105px;
+    }
+
+    .memory-large .memory-photo {
+        width: 96px;
+        height: 120px;
+    }
+
+
+    /* -----------------------------------------------------
+       VISITED
+    ----------------------------------------------------- */
+
+    .memory-card-visited
+    .memory-photo
+    img {
+        filter:
+            blur(2.8px)
+            brightness(0.68)
+            saturate(0.82);
+    }
+
+
+    /* -----------------------------------------------------
+       SELECTED PHOTO
+    ----------------------------------------------------- */
+
+    .memory-card-selected {
+        z-index: 30 !important;
+    }
+
+    .memory-card-selected
+    .memory-photo {
+
+        /*
+         * This is intentionally larger again.
+         *
+         * The previous version made the image too small.
+         */
+        width: min(84vw, 330px);
+
+        height: min(43dvh, 300px);
+
+        border-radius: 6px;
+
+        background:
+            radial-gradient(
+                circle at center,
+                rgba(45, 92, 145, 0.32),
+                rgba(5, 18, 34, 0.92)
+            );
+
+        box-shadow:
+            0 30px 65px
+            rgba(3, 12, 25, 0.55),
+
+            0 0 45px
+            rgba(82, 155, 238, 0.20);
+    }
+
+
+    .memory-card-selected
+    .memory-photo
+    img {
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+
+        filter:
+            blur(0)
+            brightness(1)
+            saturate(1);
+    }
+
+
+    .memory-card-selected
+    .memory-photo-overlay {
+        opacity: 0;
+    }
+
+
+    /* -----------------------------------------------------
+       QUOTE
+    ----------------------------------------------------- */
+
+    .memory-selected-content {
+
+        /*
+         * Do NOT use transform: translateX(-50%)
+         * here because Framer Motion owns transform.
+         */
+
+        left: 6%;
+        right: 6%;
+
+        width: auto;
+
+        bottom: 10%;
+
+        padding: 0 0.3rem;
+
+        box-sizing: border-box;
+
+        z-index: 50;
+
+        text-align: center;
+    }
+
+    .memory-selected-content p {
+
+        margin: 0;
+
+        color:
+            rgba(248, 251, 255, 0.97);
+
+        font-size:
+            clamp(
+                0.92rem,
+                4vw,
+                1.08rem
+            );
+
+        line-height: 1.4;
+
+        overflow-wrap: break-word;
+    }
+}
+
+
+/* =========================================================
+   SHORT MOBILE
+========================================================= */
+
+@media (max-width: 600px)
+and (max-height: 650px) {
+
+    .memory-field {
+        inset: 6% 0 15%;
+    }
+
+
+    .memory-card-selected {
+        z-index: 30 !important;
+    }
+
+
+    .memory-card-selected
+    .memory-photo {
+
+        /*
+         * Keep a clearly visible photo even
+         * on short screens.
+         */
+        width: min(82vw, 300px);
+
+        height: 250px;
+    }
+
+
+    .memory-selected-content {
+
+        left: 5%;
+        right: 5%;
+
+        bottom: 8%;
+
+        width: auto;
+
+        padding: 0 0.25rem;
+    }
+
+
+    .memory-selected-content p {
+
+        font-size: 0.88rem;
+
+        line-height: 1.35;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .memory-small .memory-photo {
+        width: 66px;
+        height: 82px;
+    }
+
+    .memory-medium .memory-photo {
+        width: 76px;
+        height: 95px;
+    }
+
+    .memory-large .memory-photo {
+        width: 88px;
+        height: 110px;
+    }
+
+
+    .memory-card-selected
+    .memory-photo {
+
+        width: 82vw;
+
+        height: 235px;
+    }
+}

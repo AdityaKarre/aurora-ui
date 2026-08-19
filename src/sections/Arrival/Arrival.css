@@ -1,0 +1,523 @@
+/* =========================================================
+   ARRIVAL — CINEMATIC FIRST IMPRESSION
+   VL BLUE WORLD
+========================================================= */
+
+.arrival {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 48%,
+            rgba(35, 91, 150, 0.16),
+            transparent 52%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(4, 20, 38, 0.18),
+            rgba(3, 17, 32, 0.08)
+        );
+}
+
+
+/* =========================================================
+   CENTRAL ATMOSPHERE
+========================================================= */
+
+.arrival::before {
+    content: "";
+
+    position: absolute;
+
+    width: min(760px, 82vw);
+    height: min(760px, 82vw);
+
+    left: 50%;
+    top: 48%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(104, 177, 245, 0.16) 0%,
+            rgba(83, 151, 220, 0.075) 28%,
+            rgba(63, 125, 194, 0.025) 50%,
+            transparent 72%
+        );
+
+    filter: blur(22px);
+
+    pointer-events: none;
+
+    z-index: -3;
+
+    animation:
+        arrivalAtmosphere
+        10s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   SECONDARY LIGHT
+========================================================= */
+
+.arrival::after {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    right: -140px;
+    top: 8%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(103, 177, 237, 0.09),
+            transparent 70%
+        );
+
+    filter: blur(28px);
+
+    pointer-events: none;
+
+    z-index: -3;
+}
+
+
+/* =========================================================
+   SOFT VERTICAL LIGHT
+========================================================= */
+
+.arrival-container::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 8%;
+
+    width: 1px;
+    height: 78%;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(126, 190, 246, 0.035) 25%,
+            rgba(126, 190, 246, 0.08) 50%,
+            rgba(126, 190, 246, 0.025) 75%,
+            transparent
+        );
+
+    opacity: 0.8;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.arrival-container {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(900px, 90%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    padding:
+        20px
+        0
+        var(--navigation-safe-space);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.arrival-intro {
+    position: relative;
+
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    color:
+        rgba(225, 237, 249, 0.78);
+
+    font-size:
+        clamp(
+            0.92rem,
+            1.35vw,
+            1.05rem
+        );
+
+    line-height: 1.7;
+
+    letter-spacing: 0.012em;
+
+    font-weight: 400;
+
+    text-wrap: balance;
+
+    text-shadow:
+        0 4px 22px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   SECOND INTRO
+========================================================= */
+
+.arrival-second {
+    margin-top: 1rem;
+
+    max-width: 470px;
+
+    color:
+        rgba(208, 227, 245, 0.62);
+}
+
+
+/* =========================================================
+   MAIN STATEMENT
+========================================================= */
+
+.arrival-main {
+    position: relative;
+
+    width: 100%;
+
+    margin-top: 2.7rem;
+}
+
+
+/* =========================================================
+   MAIN LIGHT
+========================================================= */
+
+.arrival-main::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: min(430px, 60vw);
+    height: min(430px, 60vw);
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(107, 179, 250, 0.105),
+            rgba(83, 151, 220, 0.035) 42%,
+            transparent 70%
+        );
+
+    filter: blur(30px);
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   MAIN HEADING
+========================================================= */
+
+.arrival-main h1 {
+    position: relative;
+
+    max-width: 820px;
+
+    margin: 0 auto;
+
+    color:
+        var(--text-primary);
+
+    font-size:
+        clamp(
+            2.5rem,
+            5.5vw,
+            4.6rem
+        );
+
+    line-height: 0.99;
+
+    font-weight: 650;
+
+    letter-spacing: -0.067em;
+
+    text-wrap: balance;
+
+    text-shadow:
+        0 10px 30px rgba(3, 13, 27, 0.25),
+        0 0 35px rgba(126, 190, 246, 0.045);
+}
+
+
+/* =========================================================
+   HORIZON
+========================================================= */
+
+.arrival-main::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -34px;
+
+    width: min(380px, 62vw);
+    height: 1px;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(139, 198, 247, 0.30),
+            transparent
+        );
+
+    opacity: 0.7;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ATMOSPHERE ANIMATION
+========================================================= */
+
+@keyframes arrivalAtmosphere {
+
+    0%,
+    100% {
+        opacity: 0.78;
+        transform: translate(-50%, -50%) scale(0.98);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.03);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .arrival {
+        background:
+            radial-gradient(
+                ellipse at 50% 48%,
+                rgba(35, 91, 150, 0.19),
+                transparent 58%
+            );
+    }
+
+    .arrival::before {
+        width: 470px;
+        height: 470px;
+
+        top: 47%;
+
+        background:
+            radial-gradient(
+                circle,
+                rgba(104, 177, 245, 0.135),
+                rgba(83, 151, 220, 0.045) 43%,
+                transparent 72%
+            );
+    }
+
+    .arrival::after {
+        width: 210px;
+        height: 210px;
+
+        right: -70px;
+        top: 10%;
+    }
+
+    .arrival-container {
+        width: 88%;
+
+        min-height: 100%;
+
+        padding:
+            24px
+            0
+            var(--navigation-safe-space-mobile);
+
+        box-sizing: border-box;
+
+        justify-content: center;
+    }
+
+    .arrival-container::before {
+        top: 9%;
+        height: 76%;
+
+        opacity: 0.65;
+    }
+
+    .arrival-intro {
+        max-width: 330px;
+
+        font-size: 0.92rem;
+
+        line-height: 1.7;
+
+        letter-spacing: 0.008em;
+    }
+
+    .arrival-second {
+        max-width: 310px;
+
+        margin-top: 0.95rem;
+    }
+
+    .arrival-main {
+        margin-top: 2.45rem;
+    }
+
+    .arrival-main::before {
+        width: 330px;
+        height: 330px;
+
+        filter: blur(26px);
+    }
+
+    .arrival-main h1 {
+        max-width: 340px;
+
+        font-size:
+            clamp(
+                2.15rem,
+                10vw,
+                3.15rem
+            );
+
+        line-height: 1.02;
+
+        letter-spacing: -0.062em;
+
+        text-shadow:
+            0 9px 26px rgba(3, 13, 27, 0.28),
+            0 0 28px rgba(126, 190, 246, 0.05);
+    }
+
+    .arrival-main::after {
+        width: 180px;
+
+        bottom: -28px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .arrival-container {
+        width: 90%;
+
+        padding:
+            22px
+            0
+            var(--navigation-safe-space-mobile);
+    }
+
+    .arrival-intro {
+        max-width: 300px;
+
+        font-size: 0.88rem;
+
+        line-height: 1.68;
+    }
+
+    .arrival-second {
+        max-width: 290px;
+
+        margin-top: 0.8rem;
+    }
+
+    .arrival-main {
+        margin-top: 2.15rem;
+    }
+
+    .arrival-main h1 {
+        max-width: 315px;
+
+        font-size: 2.08rem;
+
+        line-height: 1.02;
+    }
+
+    .arrival-main::before {
+        width: 290px;
+        height: 290px;
+    }
+
+    .arrival-main::after {
+        width: 150px;
+
+        bottom: -24px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .arrival::before {
+        animation: none;
+    }
+}

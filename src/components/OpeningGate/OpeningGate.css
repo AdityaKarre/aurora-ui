@@ -1,0 +1,797 @@
+/* =========================================================
+   VL — OPENING GATE
+   Quiet / Minimal / Cinematic
+========================================================= */
+
+.opening-gate {
+    position: fixed;
+    inset: 0;
+
+    z-index: var(--z-overlay);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    isolation: isolate;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(79, 151, 224, 0.11),
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(45, 107, 170, 0.075),
+            transparent 42%
+        ),
+        linear-gradient(
+            145deg,
+            #041326 0%,
+            #071b32 48%,
+            #041529 100%
+        );
+}
+
+
+/* =========================================================
+   ATMOSPHERE
+========================================================= */
+
+.opening-gate-atmosphere {
+    position: absolute;
+    inset: -25%;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 50% 43%,
+            rgba(103, 176, 239, 0.10),
+            transparent 19%
+        ),
+        radial-gradient(
+            circle at 30% 25%,
+            rgba(65, 137, 207, 0.06),
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 76% 72%,
+            rgba(45, 112, 181, 0.05),
+            transparent 26%
+        );
+
+    filter: blur(32px);
+
+    animation:
+        openingGateDrift
+        20s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+
+/* =========================================================
+   ORBIT
+========================================================= */
+
+.opening-gate-orbit {
+    position: absolute;
+
+    width: min(72vw, 620px);
+    aspect-ratio: 1;
+
+    border:
+        1px solid
+        rgba(141, 194, 237, 0.05);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    opacity: 0.75;
+
+    transform:
+        rotate(-14deg)
+        scaleY(0.42);
+
+    box-shadow:
+        0 0 80px
+        rgba(74, 145, 216, 0.035);
+
+    animation:
+        openingGateOrbit
+        16s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+
+/* =========================================================
+   GRAIN
+========================================================= */
+
+.opening-gate-grain {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.022;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+
+    mix-blend-mode: soft-light;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.opening-gate-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(88%, 760px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   STAGE
+========================================================= */
+
+.opening-gate-stage {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   MARK
+========================================================= */
+
+.opening-gate-mark {
+    display: block;
+
+    margin-bottom: 1.35rem;
+
+    color:
+        rgba(145, 202, 244, 0.68);
+
+    font-size: 1.15rem;
+
+    line-height: 1;
+
+    text-shadow:
+        0 0 18px
+        rgba(108, 179, 237, 0.25);
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.opening-gate-eyebrow {
+    margin: 0 0 1.55rem;
+
+    color:
+        rgba(172, 201, 228, 0.45);
+
+    font-size:
+        var(--fs-micro);
+
+    font-weight: 600;
+
+    letter-spacing: 0.25em;
+
+    line-height: 1.2;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.opening-gate-stage h1 {
+    margin: 0;
+
+    color:
+        rgba(240, 247, 253, 0.94);
+
+    font-size:
+        clamp(
+            3.1rem,
+            6vw,
+            5rem
+        );
+
+    line-height: 0.98;
+
+    font-weight: 500;
+
+    letter-spacing: -0.06em;
+
+    text-wrap: balance;
+
+    text-shadow:
+        0 10px 45px
+        rgba(1, 10, 21, 0.25);
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.opening-gate-divider {
+    width: 42px;
+    height: 1px;
+
+    margin-top: 1.9rem;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(131, 190, 237, 0.55),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.opening-gate-subtitle {
+    max-width: 290px;
+
+    margin:
+        1.35rem
+        0
+        0;
+
+    color:
+        rgba(174, 201, 225, 0.55);
+
+    font-size:
+        var(--fs-subtitle);
+
+    line-height:
+        var(--lh-relaxed);
+
+    letter-spacing:
+        0.005em;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.opening-gate-progress {
+    width: min(320px, 70vw);
+
+    margin-top: 2.55rem;
+}
+
+
+.opening-gate-progress-track {
+    position: relative;
+
+    width: 100%;
+    height: 1px;
+
+    overflow: visible;
+
+    background:
+        rgba(130, 181, 225, 0.11);
+
+    border-radius: 999px;
+}
+
+
+.opening-gate-progress-fill {
+    position: relative;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(78, 150, 216, 0.45),
+            rgba(139, 201, 247, 0.95)
+        );
+
+    border-radius: inherit;
+
+    box-shadow:
+        0 0 14px
+        rgba(111, 185, 240, 0.3);
+}
+
+
+.opening-gate-progress-fill::after {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    right: 0;
+
+    width: 7px;
+    height: 7px;
+
+    transform:
+        translate(
+            50%,
+            -50%
+        );
+
+    border-radius: 50%;
+
+    background:
+        rgba(157, 214, 250, 0.95);
+
+    box-shadow:
+        0 0 12px
+        rgba(133, 199, 247, 0.6);
+}
+
+
+/* =========================================================
+   PROGRESS META
+========================================================= */
+
+.opening-gate-progress-meta {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 0.65rem;
+
+    color:
+        rgba(158, 190, 218, 0.36);
+
+    font-size:
+        0.55rem;
+
+    font-weight: 600;
+
+    letter-spacing:
+        0.18em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HEADPHONES
+========================================================= */
+
+.opening-gate-headphones {
+    gap: 0;
+}
+
+
+/* =========================================================
+   HEADPHONE TITLE
+========================================================= */
+
+.opening-gate-headphones h1 {
+    position: relative;
+
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: rgba(241, 247, 253, 0.95);
+
+    font-size: clamp(
+        3rem,
+        5.8vw,
+        5rem
+    );
+
+    line-height: 0.96;
+
+    font-weight: 500;
+
+    letter-spacing: -0.065em;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    text-shadow:
+        0 10px 45px
+        rgba(1, 10, 21, 0.28);
+}
+
+
+.opening-gate-headphones h1 span {
+    display: block;
+}
+
+
+.opening-gate-headphones h1 span:last-child {
+    color: rgba(225, 238, 249, 0.91);
+}
+
+
+/* Subtle glow */
+
+.opening-gate-headphones h1::before {
+    content: "";
+
+    position: absolute;
+
+    z-index: -1;
+
+    left: 50%;
+    top: 50%;
+
+    width: 360px;
+    height: 170px;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(83, 158, 222, 0.095),
+            transparent 68%
+        );
+
+    filter: blur(28px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .opening-gate-headphones h1 {
+        font-size: clamp(
+            2.25rem,
+            11vw,
+            3.4rem
+        );
+
+        line-height: 0.98;
+
+        letter-spacing: -0.06em;
+
+        white-space: normal;
+    }
+
+    .opening-gate-headphones h1 span {
+        white-space: nowrap;
+    }
+
+    .opening-gate-headphones h1::before {
+        width: 270px;
+        height: 130px;
+
+        filter: blur(24px);
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .opening-gate-headphones h1 {
+        font-size: 2.15rem;
+    }
+}
+
+
+/* =========================================================
+   CONTINUE
+========================================================= */
+
+.opening-gate-enter {
+    position: relative;
+
+    margin-top: 2.7rem;
+
+    min-width: 128px;
+
+    padding:
+        11px
+        16px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    border:
+        1px solid
+        rgba(137, 192, 235, 0.14);
+
+    border-radius: 999px;
+
+    background:
+        rgba(91, 153, 211, 0.045);
+
+    color:
+        rgba(212, 230, 246, 0.68);
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition:
+        color 260ms ease,
+        border-color 260ms ease,
+        background 260ms ease,
+        box-shadow 260ms ease;
+}
+
+
+.opening-gate-enter:hover {
+    color:
+        rgba(241, 248, 253, 0.94);
+
+    border-color:
+        rgba(137, 192, 235, 0.26);
+
+    background:
+        rgba(91, 153, 211, 0.075);
+
+    box-shadow:
+        0 10px 35px
+        rgba(27, 86, 139, 0.14);
+}
+
+
+.opening-gate-enter:focus-visible {
+    outline:
+        1px solid
+        rgba(139, 198, 247, 0.72);
+
+    outline-offset: 7px;
+}
+
+
+.opening-gate-enter-label {
+    font-size:
+        var(--fs-micro);
+
+    font-weight: 650;
+
+    letter-spacing:
+        0.20em;
+
+    text-transform: uppercase;
+}
+
+
+.opening-gate-arrow {
+    color:
+        rgba(137, 198, 245, 0.72);
+
+    font-size:
+        0.9rem;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   MOBILE — HEADPHONES
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .opening-gate-headphones h1 {
+        max-width: 10ch;
+
+        font-size:
+            clamp(
+                2.45rem,
+                12vw,
+                3.5rem
+            );
+
+        line-height: 1;
+
+        letter-spacing: -0.06em;
+    }
+
+
+    .opening-gate-enter {
+        margin-top: 2.25rem;
+
+        min-width: 122px;
+
+        padding:
+            10px
+            15px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .opening-gate-headphones h1 {
+        font-size: 2.3rem;
+    }
+}
+
+/* =========================================================
+   OPENING GATE NAVIGATION
+========================================================= */
+
+.opening-gate-navigation {
+    margin-top: 2.8rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 1.8rem;
+}
+
+
+/* =========================================================
+   NAVIGATION BUTTON
+========================================================= */
+
+.opening-gate-navigation-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 7px 9px;
+
+    border: none;
+
+    background: transparent;
+
+    color:
+        rgba(160, 191, 219, 0.42);
+
+    font-family: inherit;
+
+    font-size: 0.58rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        color 240ms ease,
+        transform 240ms ease;
+}
+
+
+.opening-gate-navigation-button:hover {
+    color:
+        rgba(224, 239, 250, 0.9);
+}
+
+
+/* =========================================================
+   PRIMARY
+========================================================= */
+
+.opening-gate-navigation-primary {
+    min-width: 126px;
+
+    padding:
+        11px
+        16px;
+
+    border:
+        1px solid
+        rgba(137, 192, 235, 0.14);
+
+    border-radius: 999px;
+
+    background:
+        rgba(91, 153, 211, 0.045);
+
+    color:
+        rgba(212, 230, 246, 0.68);
+
+    gap: 10px;
+}
+
+
+.opening-gate-navigation-primary:hover {
+    color:
+        rgba(241, 248, 253, 0.94);
+
+    border-color:
+        rgba(137, 192, 235, 0.26);
+
+    background:
+        rgba(91, 153, 211, 0.075);
+
+    box-shadow:
+        0 10px 35px
+        rgba(27, 86, 139, 0.14);
+}
+
+
+/* =========================================================
+   ARROWS
+========================================================= */
+
+.opening-gate-navigation-arrow {
+    font-size: 0.85rem;
+
+    color:
+        rgba(137, 198, 245, 0.72);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .opening-gate-navigation {
+        margin-top: 2.3rem;
+
+        gap: 1rem;
+    }
+
+
+    .opening-gate-navigation-button {
+        font-size: 0.52rem;
+    }
+
+
+    .opening-gate-navigation-primary {
+        min-width: 118px;
+
+        padding:
+            10px
+            14px;
+    }
+}
